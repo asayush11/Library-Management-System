@@ -1,22 +1,21 @@
 package src;
-
-import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Reservation {
     private final String id;
     private final Member member;
     private final Book book;
-    private final Date reservationDate;
-    private Date returnDate;
+    private final LocalDate reservationDate;
+    private LocalDate returnDate;
     private BookingStatus status;
 
     public Reservation(String id, Member member, Book book) {
         this.id = id;
         this.member = member;
         this.book = book;
-        this.reservationDate = new Date();
-        this.returnDate = new Date(this.reservationDate.getTime() + 604800000);
+        this.reservationDate = LocalDate.now();
+        this.returnDate = this.reservationDate.plusWeeks(2);
         this.status = BookingStatus.REQUESTED;
     }
 
@@ -32,7 +31,7 @@ public class Reservation {
         return book;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -44,7 +43,7 @@ public class Reservation {
         return status;
     }
 
-    public Date getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 }

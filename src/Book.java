@@ -42,4 +42,16 @@ public class Book {
     public BookGenre getGenre() {
         return genre;
     }
+
+    public String getRackId() {
+        return rackId;
+    }
+
+    public String getBookId() {
+        return bookId;
+    }
+
+    public String getShelfId() {
+        return shelfId;
+    }
 }

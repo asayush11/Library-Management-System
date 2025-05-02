@@ -15,28 +15,6 @@ public class Member {
         this.id = id;
     }
 
-    public Reservation reserveBook(LibraryManagementSystem libraryManagementSystem, Book book) {
-        return libraryManagementSystem.reserveBook(this, book);
-    }
-
-    public void returnBook(LibraryManagementSystem libraryManagementSystem, Reservation reservation) {
-        libraryManagementSystem.returnBook(reservation);
-
-    }
-
-    public void renewBook(LibraryManagementSystem libraryManagementSystem, Reservation reservation) {
-        libraryManagementSystem.renewBook(reservation);
-    }
-
-    public void checkoutBook(LibraryManagementSystem libraryManagementSystem, Reservation reservation) {
-        libraryManagementSystem.checkoutBook(reservation);
-
-    }
-
-    public void cancelReservation(LibraryManagementSystem libraryManagementSystem, Reservation reservation) {
-        libraryManagementSystem.cancelReservation(reservation);
-    }
-
     public String getName() {
         return name;
     }
