@@ -1,6 +1,6 @@
 package src;
 
-public class main {
+public class Demo {
     public static void main(String[] args) {
         LibraryManagementSystem libraryManagementSystem = LibraryManagementSystem.getInstance();
 
@@ -19,26 +19,28 @@ public class main {
         libraryManagementSystem.displayBooks();
 
         // Reserve books
-        Reservation reservation1 = member1.reserveBook(libraryManagementSystem, book1);
-        Reservation reservation2 = member1.reserveBook(libraryManagementSystem, book2);
-        Reservation reservation3 = member2.reserveBook(libraryManagementSystem, book3);
-        Reservation reservation4 = member2.reserveBook(libraryManagementSystem, book2);
-        member1.cancelReservation(libraryManagementSystem, reservation2);
-        Reservation reservation5 = member2.reserveBook(libraryManagementSystem, book2);
+        Reservation reservation1 = libraryManagementSystem.reserveBook(member1, book1);
+        Reservation reservation2 = libraryManagementSystem.reserveBook(member1, book2);
+        Reservation reservation3 = libraryManagementSystem.reserveBook(member2, book3);
+        Reservation reservation4 = libraryManagementSystem.reserveBook(member2, book2);
+        libraryManagementSystem.cancelReservation(member1, reservation2);
+        Reservation reservation5 = libraryManagementSystem.reserveBook(member2, book2);
 
         libraryManagementSystem.displayBooks();
 
         // Checkout books
-        member1.checkoutBook(libraryManagementSystem, reservation1);
-        member2.checkoutBook(libraryManagementSystem, reservation3);
+        libraryManagementSystem.checkoutBook(member2, reservation1);
+        libraryManagementSystem.checkoutBook(member1, reservation1);
+        libraryManagementSystem.checkoutBook(member2, reservation3);
 
         libraryManagementSystem.displayBooks();
 
-        member1.returnBook(libraryManagementSystem, reservation1);
-        member2.returnBook(libraryManagementSystem, reservation3);
-        member2.checkoutBook(libraryManagementSystem, reservation5);
-        member2.renewBook(libraryManagementSystem, reservation5);
-        member2.returnBook(libraryManagementSystem, reservation5);
+        libraryManagementSystem.returnBook(reservation1);
+        libraryManagementSystem.returnBook(reservation3);
+        libraryManagementSystem.checkoutBook(member2, reservation5);
+        libraryManagementSystem.cancelReservation(member2, reservation5);
+        libraryManagementSystem.renewBook(member2, reservation5);
+        libraryManagementSystem.renewBook(member1, reservation5);
 
         libraryManagementSystem.displayBooks();
     }
